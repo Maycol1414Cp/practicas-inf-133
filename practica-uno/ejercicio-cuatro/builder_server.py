@@ -20,6 +20,41 @@ pacientes = [{
     "doctor": "Juana Salinas"
     }]
 
+class PacienteBuilder:
+    def __init__(self):
+        self.paciente = {}
+
+    def set_ci(self, ci):
+        self.paciente["ci"] = ci
+        return self
+
+    def set_nombre(self, nombre):
+        self.paciente["nombre"] = nombre
+        return self
+
+    def set_apellido(self, apellido):
+        self.paciente["apellido"] = apellido
+        return self
+
+    def set_edad(self, edad):
+        self.paciente["edad"] = edad
+        return self
+
+    def set_genero(self, genero):
+        self.paciente["genero"] = genero
+        return self
+
+    def set_diagnostico(self, diagnostico):
+        self.paciente["diagnostico"] = diagnostico
+        return self
+
+    def set_doctor(self, doctor):
+        self.paciente["doctor"] = doctor
+        return self
+
+    def build(self):
+        return self.paciente
+
 class PacientesService:
     @staticmethod
     def buscar_paciente(ci):
@@ -94,7 +129,17 @@ class RESTRequestHandler(BaseHTTPRequestHandler):
     def do_POST(self):
         if self.path == "/pacientes":
             data = self.read_data()
-            pacientes = PacientesService.agregar_paciente(data)
+            paciente_builder = PacienteBuilder()
+            paciente = paciente_builder \
+                .set_ci(data["ci"]) \
+                .set_nombre(data["nombre"]) \
+                .set_apellido(data["apellido"]) \
+                .set_edad(data["edad"]) \
+                .set_genero(data["genero"]) \
+                .set_diagnostico(data["diagnostico"]) \
+                .set_doctor(data["doctor"]) \
+                .build()
+            pacientes = PacientesService.agregar_paciente(paciente)
             HTTPResponseHandler.handle_response(self, 201, pacientes)
         else:
             HTTPResponseHandler.handle_response(

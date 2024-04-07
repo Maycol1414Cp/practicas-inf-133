@@ -154,10 +154,7 @@ El encriptado debe ser realizado con el algoritmo de cifrado César, donde cada 
 - GET `/mensajes/{id}`
 - PUT `/mensajes/{id}`
 - DELETE `/mensajes/{id}`
-
-
-# Entrega
-- Debes crear la siguiente estructura de carpetas en tu repositorio para presentar tus soluciones:
+# INDICE
 ```bash
 practica-uno
 ├── ejercicio-uno
@@ -185,7 +182,3 @@ practica-uno
     ├── cesar_server.py
     └── cesar_client.py
 ```
-
-- Una vez que hayas completado la práctica, adjunta el enlace de tu repositorio en la tarea asignada como `PRACTICA PRIMER PARCIAL` en la plataforma Google Classroom.
-
-- Fecha LIMITE de entrega: 06/04/2024
